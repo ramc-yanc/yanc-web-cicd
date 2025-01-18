@@ -1,0 +1,1582 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+</head>
+<header>
+  <style>
+     
+    body, html {
+      height: 100%;
+      font-family: Arial, sans-serif;
+    }
+  
+    header {
+      position:sticky;
+      top: 0; 
+      z-index: 4000; 
+      background-color: #0e0d0d; 
+      color: white;
+      padding: 15px;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1); 
+    }
+  
+    .logo-container {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start; 
+    }
+  
+    .logo-container img {
+      height: 30px;   
+      width: auto;   
+    }
+  
+    .tagline {
+      font-size: 12px;
+      font-weight: normal;
+      margin-top: 8px;
+      color: #ccc;  
+      white-space: nowrap; 
+    }
+   
+    .navbar-links {
+      float: right;
+      display: flex;
+      gap: 30px;      
+      font-size: 18px;
+      justify-content: center; 
+      width: 100%;
+    }
+  
+    .navbar-links a {
+      text-decoration: none;
+      color: white;
+      padding: 8px 16px;
+      border-radius: 4px;
+      transition: background-color 0.3s ease;
+      display: flex;
+      align-items: center; 
+      gap: 8px;  
+    }
+  
+    .navbar-links a:hover {
+      background-color: #444;  
+    }
+  
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+  
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #010101;
+      min-width: 160px;
+      z-index: 1;
+    }
+  
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+  
+    .dropdown-content a {
+      color: white;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
+  
+    .dropdown-content a:hover {
+      background-color: #000000;
+    }
+  
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      width: 30px;
+      height: 21px;
+      cursor: pointer;
+    }
+  
+    .hamburger div {
+      width: 30px;
+      height: 4px;
+      background-color: white;
+      border-radius: 2px;
+      transition: transform 0.3s ease;
+    }
+  
+    .hamburger.active div:nth-child(1) {
+      transform: rotate(48deg);
+      position: relative;
+      top: 7px;
+    }
+  
+    .hamburger.active div:nth-child(2) {
+      opacity: 0;
+    }
+  
+    .hamburger.active div:nth-child(3) {
+      transform: rotate(-51deg);
+      position: relative;
+      top: -7px;
+    }
+  
+    @media screen and (max-width: 768px) {
+      header {
+        position: sticky;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 3px 9px;
+      }
+
+  
+      .navbar-links {
+        display: none; 
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 15px;
+        width: 100%;
+        text-align: center;
+      }
+  
+      .navbar-links a {
+        padding: 12px 20px;
+        font-size: 16px;
+      }
+  
+      
+      .hamburger {
+    display: flex;              
+    margin-left: auto;           
+    margin-top: 1.75px;           
+    position: absolute;          
+    top: 5px;                    
+    right: 10px;                
+  }
+      .navbar-links.active {
+        display: flex;  
+      }
+    }
+  </style>
+    <div class="logo-container">
+      <img src="images/yanc_logo.png" alt="Company Logo">
+      <div class="tagline" style="font-size: 11px;">Young Minds | Networking | Life Skills</div>
+    </div>
+    <div class="navbar-links">
+      <a href="#home"><i class="fas fa-home"></i> Home</a>
+      <div class="dropdown">
+        <a href="javascript:void(0)"><i class="fas fa-info-circle"></i> About Us</a>
+        <div class="dropdown-content">
+          <a href="#vision"><i class="fas fa-eye"></i> Vision</a>
+          <a href="#vision"><i class="fas fa-bullhorn"></i> Mission</a>
+          <a href="#corevalues"><i class="fas fa-heart"></i> Core Values</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <a href="javascript:void(0)"><i class="fas fa-cogs"></i> Our Offerings</a>
+        <div class="dropdown-content">
+          <a href="#valueproposition"><i class="fas fa-briefcase"></i> Value Proposition</a>
+          <a href="#Why us"><i class="fas fa-question-circle"></i> Why Us</a>
+          <a href="#joinus"><i class="fas fa-users"></i> Who Can Join Us</a>
+        </div>
+      </div>
+      <a href="https://forms.gle/Af3yVR7o4u9iygy16" target="_blank" rel="noopener"><i class="fas fa-suitcase"></i> Careers</a>
+      <a href="https://forms.gle/cczEPyMzFysGniSbA" target="_blank" rel="noopener"><i class="fas fa-envelope"></i> Get in Touch</a>
+    </div>
+    <div class="hamburger" onclick="toggleMenu()">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <script>
+      function toggleMenu() {
+        const menu = document.querySelector('.navbar-links');
+        const hamburger = document.querySelector('.hamburger');
+        menu.classList.toggle('active');  
+        hamburger.classList.toggle('active');  
+      }
+    
+      // For dropdown behavior on large screens (hover) and small screens (click)
+      document.querySelectorAll('.dropdown > a').forEach(dropdown => {
+        dropdown.addEventListener('click', function(e) {
+          // Check if the screen size is small (max-width 768px)
+          if (window.innerWidth <= 768) {
+            e.preventDefault();  // Prevent default behavior of the link
+            const dropdownContent = this.nextElementSibling;
+    
+            // Close all dropdowns
+            document.querySelectorAll('.dropdown-content').forEach(content => {
+              if (content !== dropdownContent) {
+                content.style.display = 'none';
+              }
+            });
+    
+            // Toggle the clicked dropdown
+            dropdownContent.style.display = dropdownContent.style.display === 'block' ? 'none' : 'block';
+          }
+        });
+      });
+    
+      // For hover functionality on large screens
+      document.querySelectorAll('.dropdown').forEach(dropdown => {
+        dropdown.addEventListener('mouseenter', function() {
+          if (window.innerWidth > 768) {is i
+            this.querySelector('.dropdown-content').style.display = 'block';
+          }
+        });
+    
+        dropdown.addEventListener('mouseleave', function() {
+          if (window.innerWidth > 768) {
+            this.querySelector('.dropdown-content').style.display = 'none';
+          }
+        });
+      });
+    </script>
+    
+</header> 
+<body>  
+  <h1>hello there this is for testing purpose</h1>
+<section id="home">
+        <style>
+            
+            
+            body, html {
+              height: 100%;
+            
+            }
+            
+            .mySlides {
+              display: none;
+              position: relative;
+            }
+            
+            img {
+              width: 100%;
+              height: auto;
+              object-fit: contain;
+            }
+            
+            .slideshow-container {
+              max-width: 100%;
+              position: relative;
+              margin: auto;
+            }
+            
+            .text-container {
+              position: absolute;
+              bottom: 0;
+              left: 0;
+              right: 0;
+              background: rgba(0, 0, 0, 0.7);
+              color: white;
+              padding: 20px;
+              text-align: center;
+              font-family: Arial, sans-serif;
+              box-sizing: border-box;
+              width: 100%;
+            }
+            
+            .text-container h3 {
+              margin: 10px 0 5px;
+              font-size: 24px;
+            }
+            
+            .text-container p {
+              margin: 5px 0;
+              font-size: 16px;
+              line-height: 1.5;
+            }
+            
+            .prev, .next {
+              cursor: pointer;
+              position: absolute;
+              top: 50%;
+              width: auto;
+              padding: 16px;
+              margin-top: -22px;
+              color: white;
+              font-weight: bold;
+              font-size: 18px;
+              transition: 0.6s ease;
+              border-radius: 0 3px 3px 0;
+              user-select: none;
+            }
+            
+            .next {
+              right: 0;
+              border-radius: 3px 0 0 3px;
+            }
+            
+            .prev:hover, .next:hover {
+              background-color: #f1f1f1;
+              color: black;
+            }
+            
+            .dot {
+              cursor: pointer;
+              height: 15px;
+              width: 15px;
+              margin: 0 2px;
+              background-color: #bbb;
+              border-radius: 50%;
+              display: inline-block;
+              transition: background-color 0.6s ease;
+            }
+            
+            .active, .dot:hover {
+              background-color: #000000;
+            }
+            
+            @media screen and (min-width: 768px) {
+              img {
+                height: 100vh;
+                object-fit: cover;
+              }
+            }
+            </style>
+<div class="slideshow-container">
+  <div class="mySlides">
+    <img src="images/bg_banner2.jpg" style="width:100%">
+    <div class="text-container">
+        <h3 style="color:#bbb">The Illusion of Readiness</h3>
+        <p>Fresh out of college, ready to conquer the world? Think Again.</p>
+    </div>
+  </div>
+
+  <div class="mySlides">
+    <img src="images/bg_banner1.jpg" style="width:100%">
+    <div class="text-container">
+        <h3 style="color: #bbb;">If you could rewind time</h3>
+        <p> What would you change? What would you do differently?</p>
+    </div>
+  </div>
+
+  <div class="mySlides">
+    <img src="images/bg_banner3.jpg" style="width:100%">
+    <div class="text-container">
+        <h3 style="color: #bbb;">The Power of Networking and Life Skills</h3>
+    </div>
+  </div>
+
+  <div class="mySlides">
+    <img src="images/bg_banner4.jpg" style="width:100%">
+    <div class="text-container">
+        <h3 style="color: #bbb;">Your bridge to access the powerful and exclusive network from young age</h3>
+    </div>
+  </div>
+
+  <div class="mySlides">
+    <img src="images/bg_banner5.png" style="width:100%">
+    <div class="text-container">
+        <h3 style="color: #bbb;">YANC helps you get ready for life</h3>
+        <p>Access an exclusive network and develop key skills from a young age through networking and experiential learning.</p>
+    </div>
+  </div>
+
+  <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+  <a class="next" onclick="plusSlides(1)">&#10095;</a>
+</div>
+
+<div style="text-align:center">
+  <span class="dot" onclick="currentSlide(1)"></span> 
+  <span class="dot" onclick="currentSlide(2)"></span> 
+  <span class="dot" onclick="currentSlide(3)"></span> 
+  <span class="dot" onclick="currentSlide(4)"></span> 
+  <span class="dot" onclick="currentSlide(5)"></span>  
+</div>
+
+<script>
+let slideIndex = 0;
+let slideInterval;
+
+function startSlideshow() {
+  slideInterval = setInterval(() => {
+    slideIndex++;
+    showSlides();
+  }, 10000);
+}
+
+function showSlides() {
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+  let dots = document.getElementsByClassName("dot");
+
+  if (slideIndex >= slides.length) {slideIndex = 0;}
+  if (slideIndex < 0) {slideIndex = slides.length - 1;}
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";  
+  }
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+
+  slides[slideIndex].style.display = "block";  
+  dots[slideIndex].className += " active";
+}
+
+function plusSlides(n) {
+  clearInterval(slideInterval);
+  slideIndex += n;
+  showSlides();
+  startSlideshow();
+}
+
+function currentSlide(n) {
+  clearInterval(slideInterval);
+  slideIndex = n - 1;
+  showSlides();
+  startSlideshow();
+}
+
+showSlides();
+startSlideshow();
+setInterval(showSlides, 8500);
+</script>
+ </div>
+</section>
+<section id="about" style="margin-top: -50px;margin-bottom: -100px;"> 
+  <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:1200px; padding-left: 20px; padding-right: 20px;">
+    <h2 class="flash-card-title w3-xlarge w3-bottombar w3-border-gold w3-padding-16" 
+        style="font-size: 12px">
+        Yet Another Networking Club
+    </h2> <!-- Font size set to 16px by default, nowrap for one line -->
+
+    <p class="w3-justify">Networking and life skills are crucial in today's fast-paced world. 
+      Networking helps you connect with diverse individuals, opening doors to job opportunities, partnerships, and mentorships. It fosters knowledge sharing and skill development,
+      enhancing your professional growth. Life skills, such as communication, problem-solving, and emotional intelligence, are essential for navigating daily challenges and building meaningful relationships. Together, these skills enable you to adapt to changing environments, make informed decisions, and achieve personal and professional success. 
+      Embracing networking and life skills ensures you stay relevant, resilient, and ready to seize new opportunities.</p>
+  </div>
+
+<style>
+  @media (max-width: 768px) {
+    /* For smaller screens */
+    #about h2 {
+      font-size: 14px; /* Reduced font-size on smaller screens */
+    }
+  }
+
+  @media (max-width: 480px) {
+    /* For very small screens (like mobile phones in portrait mode) */
+    #about h2 {
+      font-size: 12px; /* Further reduced font-size */
+    }
+  }
+</style>
+</section>
+
+<section id="vision">
+    <style>
+      /* Vision Section Container */
+      .vision-container {
+        text-align: center;
+        padding: 64px 16px;
+        background: #fffefe;
+      }
+  
+      /* Section Title */
+      .vision-title {
+        font-size: 2.5em;
+        color: #000;
+        margin-bottom: 50px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+      }
+  
+      /* Grid Layout for Vision & Mission Cards */
+      .vision-grid {
+        margin-top:20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 50px;
+        flex-wrap: wrap;
+      }
+  
+      /* Vision & Mission Cards */
+      .vision-card {
+        background: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        width: 300px;
+        padding: 25px 20px;
+        text-align: center;
+        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+      }
+  
+      .vision-card:hover {
+        transform: scale(1.05);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      }
+  
+      /* Icon Styling */
+      .vision-icon {
+        font-size: 3em;
+        color: #000; /* Black color for icons */
+        margin-bottom: 15px;
+        animation: pulse 1.5s infinite; /* Pulse animation */
+      }
+
+      /* Pulse Animation */
+      @keyframes pulse {
+        0% {
+          transform: scale(1); /* Normal size */
+        }
+        50% {
+          transform: scale(1.2); /* Slightly bigger */
+        }
+        100% {
+          transform: scale(1); /* Back to normal size */
+        }
+      }
+  
+      /* Text Content */
+      .vision-card h3 {
+        font-size: 1.7em;
+        margin: 15px 0 10px;
+        color: #000;
+      }
+  
+      .vision-card p {
+        font-size: 1.1em;
+        color: #555;
+        line-height: 1.5;
+      }
+  
+      /* Responsive Design for Small Screens */
+      @media (max-width: 768px) {
+        .vision-grid {
+          flex-direction: column; /* Stacks cards vertically */
+          gap: 20px; /* Spacing between cards */
+        }
+  
+        .vision-card {
+          width: 100%; /* Full width on small screens */
+          max-width: 350px;
+          margin: 0 auto; /* Center-align cards */
+        }
+      }
+      
+    </style>
+  
+    <!-- Vision Section -->
+    <div class="vision-container">
+        <h2 class="flash-card-title w3-xlarge w3-bottombar w3-border-gold w3-padding-16">Our Purpose</h2>
+      <div class="vision-grid">
+        <!-- Vision Card -->
+        <div class="vision-card">
+          <i class="fas fa-eye vision-icon"></i>
+          <h3>Vision</h3>
+          <p>Empowering young minds together</p>
+        </div>
+  
+        <!-- Mission Card -->
+        <div class="vision-card">
+          <i class="fas fa-rocket vision-icon"></i>
+          <h3>Mission</h3>
+          <p>Help you get ready for life</p>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Font Awesome Script -->
+    <script
+      src="https://kit.fontawesome.com/a076d05399.js"
+      crossorigin="anonymous"
+    ></script>
+</section>
+<section id="corevalues">
+  <style>
+      /* Container for all flash cards */
+      .flash-card-container {
+          text-align: center;
+          padding: 20px;
+          background: #fffefe;
+      }
+
+      /* Header section */
+      .flash-card-header {
+          margin-bottom: 20px;
+      }
+
+      .flash-card-title {
+          font-size: 2.5em;
+          color: #000000; /* Black color for the title */
+          text-transform: uppercase;
+          letter-spacing: 2px;
+      }
+
+      .flash-card-title .w3-bottombar {
+          border-color: #000000; /* Black bottom bar */
+          border-width: 4px;
+      }
+
+      /* Flash card grid */
+      .flash-card-grid {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          gap: 20px;
+          margin: 20px auto;
+      }
+
+      /* Media query for smaller screens (max-width: 768px) */
+      @media (max-width: 768px) {
+          .flash-card-grid {
+              grid-template-columns: repeat(3, 1fr);
+          }
+      }
+
+      /* Media query for extra small screens (max-width: 480px) */
+      @media (max-width: 480px) {
+          .flash-card-grid {
+              grid-template-columns: 1fr;
+          }
+      }
+
+      /* Individual card styling */
+     .flash-card {
+    background: rgb(255, 255, 255) !important; /* Ensures all cards are white */
+    color: #000000;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    position: relative;
+    animation: flash 2s infinite;
+    transition: transform 0.3s ease-in-out;
+}
+
+
+      .flash-card:hover {
+          transform: scale(1.05);
+      }
+
+      /* Content inside each card */
+      .flash-card-content {
+          padding: 20px;
+          text-align: center;
+      }
+
+      .flash-card h3 {
+          font-size: 1.5em;
+          margin-bottom: 10px;
+          color: #000000; /* Black heading color */
+      }
+
+      .flash-card-icon {
+          font-size: 3em;
+          margin: 15px 0;
+          color: #000000; /* Black icon color */
+          animation: pulse 2s infinite;
+      }
+
+      .flash-card p {
+          font-size: 1em;
+          margin-top: 10px;
+          color: #000000; /* Black paragraph color */
+      }
+
+      /* Animations */
+      @keyframes flash {
+          0%, 100% {
+              background: #ffffff; /* White */
+          }
+          50% {
+              background: #f8f8f8; /* Slightly off-white */
+          }
+      }
+
+      @keyframes pulse {
+          0%, 100% {
+              transform: scale(1);
+          }
+          50% {
+              transform: scale(1.1);
+          }
+      }
+  </style>
+  <div class="flash-card-container" id="core">
+      <div class="flash-card-header">
+          <h2 class="flash-card-title w3-xlarge w3-bottombar w3-border-gold w3-padding-16">Core Values</h2>
+      </div>
+
+      <div class="flash-card-grid">
+          <!-- Card 1 -->
+          <div class="flash-card">
+              <div class="flash-card-content">
+                  <h3>Do the Right Thing</h3>
+                  <i class="fas fa-balance-scale flash-card-icon"></i>
+                  <p>Act with integrity and make ethical decisions</p>
+              </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="flash-card">
+              <div class="flash-card-content">
+                  <h3>Think Big, Start Small</h3>
+                  <i class="fas fa-lightbulb flash-card-icon"></i>
+                  <p>Dream ambitiously while taking actionable steps</p>
+              </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="flash-card">
+              <div class="flash-card-content">
+                  <h3>Gratitude</h3>
+                  <i class="fas fa-heart flash-card-icon"></i>
+                  <p>Fostering a culture of appreciation and support.</p>
+              </div>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="flash-card">
+              <div class="flash-card-content">
+                  <h3>Respect</h3>
+                  <i class="fas fa-users flash-card-icon"></i>
+                  <p>Treat everyone with dignity and value diverse perspectives</p>
+              </div>
+          </div>
+
+          <!-- Card 5 -->
+          <div class="flash-card">
+              <div class="flash-card-content">
+                  <h3>Purposeful Learning</h3>
+                  <i class="fas fa-book flash-card-icon"></i>
+                  <p>Breaking silos, fostering cross-functional teamwork</p>
+              </div>
+          </div>
+
+          <!-- Card 6 -->
+          <div class="flash-card">
+              <div class="flash-card-content">
+                  <h3>Resilience</h3>
+                  <i class="fas fa-sync-alt flash-card-icon"></i>
+                  <p>Maintaining focus and determination despite setbacks</p>
+              </div>
+          </div>
+
+          <!-- Card 7 -->
+          <div class="flash-card">
+              <div class="flash-card-content">
+                  <h3>Fostering Connections</h3>
+                  <i class="fas fa-handshake flash-card-icon"></i>
+                  <p>Building strong relationships with clients and stakeholders</p>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
+<section id="
+  ">
+  <style>
+      /* Header section */
+      .flash-card-header {
+          margin-bottom: 20px;
+      }
+
+      .flash-card-title {
+          font-size: 2.5em;
+          color: #fbfbf9;
+          text-transform: uppercase;
+          letter-spacing: 2px;
+      }
+
+      .flash-card-title .w3-bottombar {
+          border-color: #fafafa;
+          border-width: 4px;
+      }
+
+      /* Flash card grid */
+      .flash-card-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 20px;
+          margin: 20px auto;
+      }
+
+      /* Media query for smaller screens (max-width: 768px) */
+      @media (max-width: 768px) {
+          .flash-card-grid {
+              grid-template-columns: repeat(2, 1fr);
+          }
+      }
+
+      /* Media query for extra small screens (max-width: 480px) */
+      @media (max-width: 480px) {
+          .flash-card-grid {
+              grid-template-columns: 1fr;
+          }
+      }
+
+      /* Individual card styling */
+     .flash-card {
+      background: #ffffff;
+      color: #060606;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+      overflow: hidden;
+      position: relative;
+      animation: flash 2s infinite;
+      transition: transform 0.3s ease-in-out;
+    }
+
+      .flash-card:hover {
+          transform: scale(1.05);
+      }
+
+      /* Content inside each card */
+      .flash-card-content {
+          padding: 20px;
+          text-align: center;
+      }
+
+      .flash-card h3 {
+          font-size: 1.5em;
+          margin-bottom: 10px;
+          color: #040404; /* White heading color */
+      }
+
+      .flash-card-icon {
+          font-size: 3em;
+          margin: 15px 0;
+          color: #080808; /* White icon color */
+          animation: pulse 2s infinite;
+      }
+
+      .flash-card p {
+          font-size: 1em;
+          margin-top: 10px;
+          color: #070707; /* White paragraph color */
+      }
+
+      /* Animations */
+      @keyframes flash {
+          0%, 100% {
+              background: #f7f5f5; /* White */
+          }
+          50% {
+              background: #f6f4f4; /* Slightly off-white */
+          }
+      }
+
+      @keyframes pulse {
+          0%, 100% {
+              transform: scale(1);
+          }
+          50% {
+              transform: scale(1.2);
+          }
+      }
+  </style>
+
+  <div class="flash-card-container" id="valueproposition">
+      <div class="flash-card-header">
+          <h2 class="flash-card-title w3-xlarge w3-bottombar w3-border-gold w3-padding-16">Value Proposition</h2>
+      </div>
+
+      <div class="flash-card-grid">
+          <!-- Card 1 -->
+          <div class="flash-card">
+              <div class="flash-card-content">
+                  <h3>Monthly Meetups & Networking</h3>
+                  <i class="fas fa-calendar-check flash-card-icon"></i>
+                  <p>Connect with peers and professionals in engaging meetings to expand your network.</p>
+              </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="flash-card">
+              <div class="flash-card-content">
+                  <h3>Mentorship Programs</h3>
+                  <i class="fas fa-chalkboard-teacher flash-card-icon"></i>
+                  <p>Gain insights from experienced mentors across different industries to help guide your career.</p>
+              </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="flash-card">
+              <div class="flash-card-content">
+                  <h3>Practical Skill-Building Workshops</h3>
+                  <i class="fas fa-tools flash-card-icon"></i>
+                  <p>Enhance your skills through hands-on workshops designed for real-world application.</p>
+              </div>
+          </div>
+      </div>
+
+      <div class="flash-card-grid">
+          <!-- Card 4 -->
+          <div class="flash-card">
+              <div class="flash-card-content">
+                  <h3>Real-World Project Experience</h3>
+                  <i class="fas fa-project-diagram flash-card-icon"></i>
+                  <p>Work on industry-relevant projects that provide you with the hands-on experience you need.</p>
+              </div>
+          </div>
+
+          <!-- Card 5 -->
+          <div class="flash-card">
+              <div class="flash-card-content">
+                  <h3>Financial Literacy</h3>
+                  <i class="fas fa-indian-rupee-sign flash-card-icon"></i>
+                <p>Learn essential financial strategies and practices to manage your personal and business finances.</p>
+              </div>
+          </div>
+
+          <!-- Card 6 -->
+          <div class="flash-card">
+              <div class="flash-card-content">
+                  <h3>Building Relationships</h3>
+                  <i class="fas fa-users-cog flash-card-icon"></i>
+                  <p>Foster strong interpersonal connections to help you build a professional network and career.</p>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
+<section id="takeaway">
+  <style>
+    /* Base Styles */
+    .container {
+      width: 90%;
+      margin: 0 auto;
+      text-align: center; /* Ensures center alignment for text inside the container */
+    }
+
+    .flash-card-title {
+      padding-bottom: 8px; /* Reduced space between heading and underline */
+    }
+
+    .cards-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center; /* Center-align cards */
+      gap: 40px; /* Increased gap between cards */
+      padding-bottom: 30px; /* Adjust padding at the bottom */
+      margin-top: 30px; /* Increased space between underline and cards */
+    }
+
+    /* Default Card Styling */
+    .card {
+      width: 45%; /* Slightly smaller width for tighter alignment */
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      overflow: hidden;
+      transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+      cursor: pointer;
+    }
+
+    .card:hover, .card:focus, .card:active {
+      transform: scale(1.05);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .card img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 20px;
+    }
+
+    .card-footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 10px;
+      border-top: 1px solid #444;
+    }
+
+    .card-footer p {
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+
+    /* Large Screens - Reduce Card and Image Size */
+    @media (min-width: 1200px) {
+      .card {
+        width: 40%;
+      }
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+      .card {
+        width: 100%;
+      }
+
+      .cards-wrapper {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .card-footer p {
+        font-size: 0.8rem;
+      }
+    }
+
+    /* Extra Small Devices */
+    @media (max-width: 480px) {
+      .flash-card-title {
+        font-size: 2rem; /* Adjust heading size for small screens */
+        padding: 30px 0;
+      }
+    }
+  </style>
+
+  <div class="container" id="takeaway-section">
+    <!-- Centered Heading with W3 Bottom Bar -->
+    <h2 class="flash-card-title w3-xlarge w3-bottombar w3-border-gold w3-padding-16">
+      Your Takeaway
+    </h2>
+
+    <!-- Cards Wrapper -->
+    <div class="cards-wrapper">
+      <div class="card" tabindex="0">
+        <img src="images/takeaway1.jpg" alt="Life Skills & Experience">
+        <div class="card-content">
+          <h3>Life Skills & Experience</h3>
+          <p>Crucial tools for success.</p>
+        </div>
+        <footer class="card-footer">
+          <p style="text-align: center;font-size: 1.2rem;">Empowering your journey</p>
+        </footer>
+      </div>
+      <div class="card" tabindex="0">
+        <img src="images/takeaway2.jpg" alt="Meaningful Connections">
+        <div class="card-content">
+          <h3>Meaningful Connections</h3>
+          <p>Building relationships and social skills.</p>
+        </div>
+        <footer class="card-footer">
+          <p style="text-align: center;font-size: 1.2rem;">Networking made easy</p>
+        </footer>
+      </div>
+    </div>
+  </div>
+</section>
+  <section id="testing">
+    <h1>this is testing</h1>
+  </section>
+<section id="Why us">
+  <style>
+      .heading {
+          font-size: 3rem;
+          color: #f3f0f0;
+          font-weight: 700;
+          margin-bottom: 60px;
+          padding-bottom: 8px; /* Reduced space between heading and underline */
+      }
+
+      .why-us-wrapper {
+          display: flex;
+          justify-content: space-around;
+          gap: 30px;
+          flex-wrap: wrap;
+      }
+
+      .why-us-card {
+          background-color: #fff;
+          border-radius: 10px;
+          width: 28%;
+          box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+          transition: all 0.3s ease-in-out;
+          padding: 40px;
+          cursor: pointer;
+          text-align: center; /* Ensures the icon and text are centered */
+      }
+
+      .why-us-card:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+      }
+
+      /* Pulse Animation */
+      @keyframes pulse {
+          0% {
+              transform: scale(1); /* Normal size */
+          }
+          50% {
+              transform: scale(1.2); /* Slightly larger */
+          }
+          100% {
+              transform: scale(1); /* Back to normal size */
+          }
+      }
+
+      /* Icon Styling */
+      .why-us-card .icon {
+          width: 80px;
+          height: 80px;
+          margin-bottom: 20px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background-color: #fff;
+          border-radius: 50%;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for the icons */
+          animation: pulse 1.5s infinite; /* Pulse effect */
+          margin-left: auto;
+          margin-right: auto;
+          border: 2px solid #000; /* Black border for icons */
+      }
+
+      /* Inside Circle Icon Effects */
+      .why-us-card .icon span {
+          font-size: 36px;
+          font-weight: bold;
+          color: #000; /* Icon color set to black for clarity */
+      }
+
+      .why-us-card header {
+          font-size: 1.6rem;
+          color: #f8f5f5;
+          margin-bottom: 15px;
+          border-radius: 5px;
+      }
+
+      .why-us-card .content {
+          font-size: 1.1rem;
+          color: #666;
+          margin-bottom: 20px;
+      }
+
+      .why-us-card footer {
+          font-size: 1rem;
+          font-weight: bold;
+          color: #ffffff;
+          text-transform: uppercase;
+          background-color: #000000;
+          padding: 12px 0;
+          border-radius: 6px;
+      }
+
+      @media (max-width: 768px) {
+          .why-us-card {
+              width: 45%;
+          }
+      }
+
+      @media (max-width: 480px) {
+          .why-us-card {
+              width: 100%;
+          }
+          .heading {
+              font-size: 2.5rem;
+          }
+      }
+  </style>
+
+  <div class="container">
+      <!-- Centered Heading with W3 Bottom Bar -->
+      <h2 class="heading w3-xlarge w3-bottombar w3-border-gold w3-padding-16">
+          Why Us
+      </h2>
+
+      <div class="why-us-wrapper">
+          <!-- Card 1: The YANC Advantage -->
+          <div class="why-us-card">
+              <div class="icon">
+                  <i class="fas fa-suitcase" style="color: black; font-size: 35px;"></i>
+              </div>
+              <header>The YANC Advantage</header>
+              <div class="content">
+                  <p>All-in-one platform for personal and professional growth</p>
+              </div>
+              <footer>Empowering Your Future</footer>
+          </div>
+
+          <!-- Card 2: Comprehensive Ecosystem -->
+          <div class="why-us-card">
+              <div class="icon">
+                  <i class="fas fa-plug" style="color: black; font-size: 35px;"></i> <!-- Link/Chain symbol for connectivity -->
+              </div>
+              <header>Comprehensive Ecosystem</header>
+              <div class="content">
+                  <p>Blending human touch with technological innovation</p>
+              </div>
+              <footer>Innovative Connections</footer>
+          </div>
+
+          <!-- Card 3: Cutting-Edge Approach -->
+          <div class="why-us-card">
+              <div class="icon">
+                  <i class="fas fa-tachometer-alt" style="font-size: 35px;"></i>  <!-- Wrench for cutting-edge tools and innovation -->
+              </div>
+              <header>Cutting-Edge Approach</header>
+              <div class="content">
+                  <p>Leveraging the latest tools and techniques for optimal results</p>
+              </div>
+              <footer>Leading the Future</footer>
+          </div>
+      </div>
+  </div>
+</section>
+<section id="joinus">
+  <style>
+    #joinus {
+      padding: 16px 0; /* Reduced padding around the "Join Us" section */
+    }
+
+    .w3-card-4 {
+      margin-bottom: 12px; /* Reduced margin between cards */
+      overflow: hidden;
+      border-radius: 15px;
+      transition: box-shadow 0.3s ease-in-out;
+    }
+
+    .w3-card-4:hover {
+      box-shadow: 0 4px 50px rgba(0, 0, 0, 0.5);
+    }
+
+    .w3-card-4 img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-top-left-radius: 15px;
+      border-top-right-radius: 15px;
+    }
+
+    .w3-third {
+      padding: 8px;
+    }
+
+    .w3-card-4 .w3-container {
+      height: 200px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .w3-center {
+      padding: 64px 0;
+      text-align: center;
+    }
+
+    .w3-xlarge {
+      font-size: 32px;
+      font-weight: bold;
+      color: #333;
+      display: inline-block;
+      padding-bottom: 4px; /* Reduced padding below heading */
+      border-bottom: 2px solid #FFD700; /* Reduced bottom bar thickness */
+    }
+
+    .w3-margin-bottom {
+      margin-bottom: 24px;
+    }
+
+    /* Further reduced space between heading and cards */
+    .joinus-heading-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 0px; /* Removed margin between heading and cards */
+    }
+
+    .w3-padding-16 {
+      padding-top: 2px; /* Reduced top padding for heading */
+    }
+  </style>
+
+  <!-- Centered Heading with Bottom Bar -->
+  <div class="joinus-heading-container">
+    <h2 class="heading w3-xlarge w3-bottombar w3-border-gold w3-padding-16">
+      Join Us
+    </h2>
+  </div>
+
+  <div class="w3-row-padding">
+    <!-- Card for Youth -->
+    <div class="w3-third w3-margin-bottom">
+      <div class="w3-card-4">
+        <img src="images/youth.jpg" alt="Youth">
+        <div class="w3-container">
+          <p class="w3-opacity" style="text-align: center;">For Youth (15-28)</p>
+          <p style="text-align: center;">Access a world of opportunities to grow, learn, and connect.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card for Mentors -->
+    <div class="w3-third w3-margin-bottom">
+      <div class="w3-card-4">
+        <img src="images/mentor.jpg" alt="Mentor">
+        <div class="w3-container">
+          <p class="w3-opacity" style="text-align: center;">For Mentors</p>
+          <p style="text-align: center;">Share your expertise and make a difference in young lives</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card for Partners -->
+    <div class="w3-third w3-margin-bottom">
+      <div class="w3-card-4">
+        <img src="images/partner.jpg" alt="Partner">
+        <div class="w3-container">
+          <p class="w3-opacity" style="text-align: center;">For Partners</p>
+          <p style="text-align: center;">Academia, Corporate and Entrepreneurs can empower the next generation</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <section class="contact-section" id="mail">
+    <p class="intro-text" style="color: black;">Ready to embark on your journey of growth and empowerment? Contact us today!</p>
+    <button class="email-button" onclick="sendMail()">Email Us</button>
+    
+ <p class="info-text">Reach out to us at <a href="mailto:hello@yanc.in" onclick="sendMail(event)">hello@yanc.in</a> for any questions or to join YANC.</p>
+
+<script>
+  function sendMail(event) {
+    if (event) event.preventDefault();
+
+    const mailTo = "hello@yanc.in";
+    const subject = "Inquiry from Your Website";
+    const body = "Hello,\n\nI would like to learn more about your services.\n\nBest Regards,";
+    
+    const encodedBody = encodeURIComponent(body).replace(/%0A/g, '\n');
+    const gmailAppUrl = `googlegmail://co?to=${mailTo}&subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    const gmailWebUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(mailTo)}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    const mailtoUrl = `mailto:${mailTo}?subject=${encodeURIComponent(subject)}&body=${encodedBody}`;
+
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+    if (isMobile) {
+      const userChoice = confirm("Would you like to open this email in your email app? Click 'Cancel' to open in Gmail web.");
+      
+      if (userChoice) {
+        const openedGmailApp = window.open(gmailAppUrl, '_blank');
+        
+        setTimeout(() => {
+          if (!openedGmailApp || openedGmailApp.closed) {
+            alert("Failed to open Gmail app, opening in Chrome.");
+            window.open(gmailWebUrl, '_blank');
+          }
+        }, 1000);
+      } else {
+        window.open(gmailWebUrl, '_blank');
+      }
+    } else {
+      window.open(gmailWebUrl, '_blank');
+    }
+
+    setTimeout(() => {
+      window.location.href = "https://yanc.in";
+    }, 2000);
+  }
+</script>
+
+
+    
+  <style>
+   
+    .contact-section {
+      text-align: center;
+      padding: 50px;
+    }
+  
+    .intro-text {
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      
+    }
+  
+    /* Email Us Button */
+    .email-button {
+      background-color: #fff;
+      color: #000;
+      border: none;
+      padding: 15px 30px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+  
+    .email-button:hover {
+      background-color: #000;
+      color: #fff;
+    }
+  
+    /* Info Text */
+    .info-text {
+      font-size: 1.2rem;
+      margin-top: 20px;
+      color: #0c0c0c;
+    }
+  </style>
+  </section>
+   <footer class="footer">
+    <a href="#home" class="w3-button w3-black w3-margin">
+        <i class="fa fa-arrow-up w3-margin-right"></i>To the top
+    </a>
+    
+    <div class="container">
+        <div class="row">
+            <div class="footer-col">
+                <h4>About Us</h4>
+                <ul>
+                    <li><a href="#vision">Vision and Mission</a></li>
+                    <li><a href="#corevalues">Core Values</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Our Offerings</h4>
+                <ul>
+                    <li><a href="#valueproposition">Value Propositions</a></li>
+                    <li><a href="#Why us">Why Us</a></li>
+                    <li><a href="#joinus">Who Can Join</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Careers</h4>
+                <ul>
+                    <li><a href="#mail">Job Openings</a></li>
+                    <li><a href="https://forms.gle/Af3yVR7o4u9iygy16" target="_blank" rel="noopener">Internships</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Follow Us</h4>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/p/YANC-61565847200938" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://x.com/OneYanc" class="social-icon">
+                      <svg class="icon uniform-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24" xml:space="preserve">
+                        <path d="M14.095479,10.316482L22.286354,1h-1.940718l-7.115352,8.087682L7.551414,1H1l8.589488,12.231093L1,23h1.940717  l7.509372-8.542861L16.448587,23H23L14.095479,10.316482z M11.436522,13.338465l-0.871624-1.218704l-6.924311-9.68815h2.981339  l5.58978,7.82155l0.867949,1.218704l7.26506,10.166271h-2.981339L11.436522,13.338465z"/>
+                      </svg>
+                    </a>
+                    <a href="https://www.instagram.com/oneyanc/" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com/company/oneyanc/posts/?feedView=all" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+        <h7 style="color: white; text-align: center; font-family: 'Lucida Sans', 'Lucida Grande', sans-serif;">
+          <br><br><br><br>  © 2024 YANC All rights reserved.
+        </h7>
+    </div>
+
+    <style>
+        /* General Footer Styling */
+        .footer {
+            background-color: #222;
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+            font-family: 'Lucida Sans', 'Lucida Grande', sans-serif;
+        }
+
+        .footer h4 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .footer ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .footer ul li {
+            margin: 10px 0;
+        }
+
+        .footer ul li a {
+            color: #ccc;
+            text-decoration: none;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+
+        .footer ul li a:hover {
+            color: #ff7f50;
+        }
+
+        .footer-col {
+            flex: 1;
+            padding: 10px 15px;
+        }
+
+        /* Social Links Styling */
+        .social-links {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        .social-icon {
+            border: 2px solid #fff;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 10px;
+            text-decoration: none;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .social-icon i {
+            color: #fff;
+            font-size: 18px;
+        }
+
+        .social-icon:hover {
+            background-color: #ff7f50;
+            border-color: #ff7f50;
+        }
+
+        .footer .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        .footer .row {
+            display: flex;
+            width: 100%;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        /* Uniform Icon Styling */
+        .uniform-icon {
+            width: 18px;
+            height: 18px;
+        }
+
+        .uniform-icon path {
+            fill: white;
+        }
+
+        @media (max-width: 768px) {
+            .footer-col {
+                flex: 1 0 100%;
+                text-align: center;
+            }
+
+            .social-links {
+                flex-direction: row;
+                gap: 15px;
+            }
+        }
+    </style>
+</footer>
+  
+</body>
+</html>
